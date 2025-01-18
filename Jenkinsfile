@@ -2,9 +2,21 @@ pipeline {
   agent any
   stages {
     stage('build') {
-      steps {
-        sh '''!#/bin/bash
+      parallel {
+        stage('build') {
+          steps {
+            sh '''!#/bin/bash
 '''
+          }
+        }
+
+        stage('build2') {
+          steps {
+            sh '''#!/bin/bash
+'''
+          }
+        }
+
       }
     }
 
